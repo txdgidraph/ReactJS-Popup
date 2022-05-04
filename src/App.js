@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import PopupElement from "./popup";
 
-function App() {
+const App= ()  => {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen= () => {
+    setIsOpen(!isOpen)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      {isOpen && (
+      <PopupElement
+        handleClose={() => {setIsOpen(false)}}
+        content={
+          <p>
+            Way to create simple popup in ReactJS. Set up React application;
+            Create popup component; Handle the Popup; Output. 1. Set up React
+            application.
+          </p>
+        }
+      />)}
+
+      <button onClick={handleOpen}>Click to Open Popup</button>
     </div>
   );
 }
